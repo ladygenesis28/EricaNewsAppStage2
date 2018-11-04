@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">EricaNewsAppStage2</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="no_news_found">No News Found</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Settings</string>
+
+    <!-- Strings For Minimum News Per Page Preference [CHAR LIMIT=30] -->
+    <string name="settings_min_news_label">Minimum News Per Page</string>
+    <string name="settings_min_news_key" translatable="false">min_news</string>
+    <string name="settings_min_news_default" translatable="false">6</string>
+
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_topics</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_topics_label">Topics</string>
+    <string name="settings_order_by_topics" translatable="false">topics</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_most_recent_label">Most Recent</string>
+    <string name="settings_order_by_most_recent_value" translatable="false">time</string>
+</resources>
+
