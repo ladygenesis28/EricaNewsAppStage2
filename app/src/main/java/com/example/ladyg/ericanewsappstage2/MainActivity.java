@@ -89,23 +89,26 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             // Update empty state with no connection error message
             mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
+    }
         @Override
-        public void onSharedPreferenceChanged(SharedPreferences prefs, String s){
-                if (key.equals(getString(R.string.settings_min_magnitude_key)) ||
-                        key.equals(getString(R.string.settings_order_by_key))) {
-                    // Clear the ListView as a new query will be kicked off
-                    mAdapter.clear();
+        public void onSharedPreferenceChanged(SharedPreferences prefs, String s) {
+            String key = null;
+            if (key.equals(getString(R.string.settings_min_news_key)) ||
+                    key.equals(getString(R.string.settings_order_by_key))) {
+                // Clear the ListView as a new query will be kicked off
+                mAdapter.clear();
 
-                    // Hide the empty state text view as the loading indicator will be displayed
-                    mEmptyStateTextView.setVisibility(View.GONE);
+                // Hide the empty state text view as the loading indicator will be displayed
+                mEmptyStateTextView.setVisibility(View.GONE);
 
-                    // Show the loading indicator while new data is being fetched
-                    View loadingIndicator = findViewById(R.id.loading_indicator);
-                    loadingIndicator.setVisibility(View.VISIBLE);
+                // Show the loading indicator while new data is being fetched
+                View loadingIndicator = findViewById(R.id.loading_indicator);
+                loadingIndicator.setVisibility(View.VISIBLE);
 
-                    // Restart the loader to requery the USGS as the query settings have been updated
-                    getLoaderManager().restartLoader(NEWS_LOADER_ID, null, this);
-                }
+                // Restart the loader to requery the USGS as the query settings have been updated
+                getLoaderManager().restartLoader(NEWS_LOADER_ID, null, this);
+            }
+        }
 
                 @Override
                 public Loader<List<News>> onCreateLoader ( int i, Bundle bundle){
@@ -122,13 +125,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     Uri baseUri = Uri.parse(JSON_URL_NEWS);
                     Uri.Builder uriBuilder = baseUri.buildUpon();
 
-                    uriBuilder.appendQueryParameter("format", "geojson");
                     uriBuilder.appendQueryParameter("limit", "10");
                     uriBuilder.appendQueryParameter("minnews", minNews);
-                    uriBuilder.appendQueryParameter("orderby", "dates");
+                    uriBuilder.appendQueryParameter("orderby", orderBy);
 
                     return new NewsLoader(this, uriBuilder.toString());
                 }
+
 
                 @Override
                 public void onLoadFinished (Loader < List < News >> loader, List < News > data){
@@ -172,6 +175,4 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     }
                     return super.onOptionsItemSelected(item);
                 }
-            }
-        }
     }
