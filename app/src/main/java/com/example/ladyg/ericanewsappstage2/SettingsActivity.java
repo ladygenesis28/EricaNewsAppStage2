@@ -8,6 +8,8 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
+import static com.example.ladyg.ericanewsappstage2.R.xml.settings_main;
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
@@ -21,13 +23,15 @@ public class SettingsActivity extends AppCompatActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.settings_main);
+            addPreferencesFromResource(settings_main);
 
             Preference minNews = findPreference(getString(R.string.settings_min_news_key));
             bindPreferenceSummaryToValue(minNews);
 
             Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
             bindPreferenceSummaryToValue(orderBy);
+
+
         }
 
         @Override

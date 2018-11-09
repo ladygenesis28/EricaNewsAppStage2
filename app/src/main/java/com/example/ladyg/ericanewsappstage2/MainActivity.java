@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * TextView that is displayed when the list is empty
      */
     private TextView mEmptyStateTextView;
+    private String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +50,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_id);
+        recyclerView = findViewById(R.id.recyclerview_id);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        mEmptyStateTextView = findViewById(R.id.empty_view);
 
 
         // Create a new adapter that takes an empty list of news as input
@@ -92,7 +93,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
         @Override
         public void onSharedPreferenceChanged(SharedPreferences prefs, String s) {
-            String key = null;
             if (key.equals(getString(R.string.settings_min_news_key)) ||
                     key.equals(getString(R.string.settings_order_by_key))) {
                 // Clear the ListView as a new query will be kicked off
@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     uriBuilder.appendQueryParameter("minnews", minNews);
                     uriBuilder.appendQueryParameter("orderby", orderBy);
 
+
                     return new NewsLoader(this, uriBuilder.toString());
                 }
 
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     loadingIndicator.setVisibility(View.GONE);
 
                     // Set empty state text to display "No com.example.ladyg.ericanewsappstage2.News found."
-                    mEmptyStateTextView.setText(R.string.no_news_found);
+                    
 
                     mAdapter.clear();
 

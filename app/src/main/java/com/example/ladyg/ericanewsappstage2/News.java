@@ -37,22 +37,4 @@ public class News {
         return WebTitle;
     }
 
-    /**
-     * Then adding the list of Setter
-     */
-    public void setAuthorName(String authorName) {
-        AuthorName = authorName;
-    }
-
-    public void setWebTitle(String webTitle) {
-        WebTitle = webTitle;
-    }
-
-    public void setSectionName(String sectionName) {
-        SectionName = sectionName;
-    }
-
-    public void setWebPublicationDate(String webPublicationDate) {
-        WebPublicationDate = webPublicationDate;
-    }
 }
